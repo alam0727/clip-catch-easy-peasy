@@ -12,11 +12,13 @@ import { toast } from '@/components/ui/use-toast';
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [originalUrl, setOriginalUrl] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (url: string) => {
     setIsLoading(true);
     setError(null);
+    setOriginalUrl(url);
     
     try {
       const { videoUrl, error } = await processVideoUrl(url);
@@ -72,7 +74,12 @@ const Index = () => {
             
             <div className="mt-8">
               <VideoPreview videoUrl={videoUrl} isLoading={isLoading} error={error} />
-              <DownloadButton videoUrl={videoUrl} isLoading={isLoading} onClick={handleDownload} />
+              <DownloadButton 
+                videoUrl={videoUrl} 
+                originalUrl={originalUrl}
+                isLoading={isLoading} 
+                onClick={handleDownload} 
+              />
             </div>
           </div>
           
