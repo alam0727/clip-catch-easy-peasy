@@ -35,6 +35,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({ videoUrl, isLoading, error 
           className="w-full h-auto" 
           controls
           src={videoUrl}
+          autoPlay={false}
         >
           Your browser does not support the video tag.
         </video>
@@ -45,7 +46,7 @@ const VideoPreview: React.FC<VideoPreviewProps> = ({ videoUrl, isLoading, error 
   return (
     <div className="w-full max-w-md mx-auto aspect-video bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center">
       <div className="text-center p-4">
-        <p className="text-gray-500">Video preview will appear here</p>
+        <p className="text-gray-500">Paste a video URL to see a preview here</p>
       </div>
     </div>
   );
